@@ -1,0 +1,12 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+
+    location / {
+        default_type text/plain;
+        # Вывести строку "Hello from <имя_машины>!"
+        return 200 "Hello from {{ inventory_hostname }}!\n";
+    }
+} 
