@@ -1,0 +1,14 @@
+---
+- name: Configure Web Servers
+  hosts: web
+  become: yes  # повысить привилегии (sudo)
+  roles:
+    - common
+    - nginx_web
+
+- name: Configure Proxy Server
+  hosts: proxy
+  become: yes
+  roles:
+    - common
+    - nginx_proxy
