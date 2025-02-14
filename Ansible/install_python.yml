@@ -1,0 +1,10 @@
+- name: Install Python and Six on remote machines
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Update apt cache
+      raw: sudo apt-get update
+
+    - name: Install Python 3 and Six
+      raw: sudo apt-get install -y python3 python3-six
