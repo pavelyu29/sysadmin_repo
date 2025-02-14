@@ -1,0 +1,12 @@
+server {
+    listen 3000;
+    listen [::]:3000;
+
+    server_name _;
+
+    location / {
+        # Перенаправляем трафик с порта 3000 на порт 80 одной из машин из группы [web].
+        # Например, на первый хост в группе web:
+        proxy_pass http://{{ hostvars[groups['web'][0]]['ansible_host'] }}:80;
+    }
+} 
